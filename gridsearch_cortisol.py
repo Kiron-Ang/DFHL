@@ -1,21 +1,16 @@
+# Print Python version and import libraries!
 import subprocess
-
-# Print Python version and install/update/import libraries!
 subprocess.run("python -V")
 
-subprocess.run("pip install -U scikit-learn")
 import sklearn
 print("scikit-learn", sklearn.__version__)
 
-subprocess.run("pip install -U matplotlib")
 import matplotlib
 print("matplotlib", matplotlib.__version__)
 
-subprocess.run("pip install -U seaborn")
 import seaborn
 print("seaborn", seaborn.__version__)
 
-subprocess.run("pip install -U polars")
 import polars
 print("polars", polars.__version__)
 
@@ -49,19 +44,13 @@ print("y", y.shape)
 # Use GridSearchCV to choose the best parameters
 import sklearn.model_selection
 
-N_NEIGHBORS_OPTIONS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-WEIGHTS_OPTIONS = ["uniform", "distance"]
-ALGORITHM_OPTIONS = ["ball_tree", "kd_tree", "brute"]
-LEAF_SIZE_OPTIONS = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+N_NEIGHBORS_OPTIONS = [1, 10, 100, 100]
 
 param_grid = {
-    "kneighborsregressor__n_neighbors" : N_NEIGHBORS_OPTIONS,
-    "kneighborsregressor__weights" : WEIGHTS_OPTIONS,
-    "kneighborsregressor__algorithm" : ALGORITHM_OPTIONS,
-    "kneighborsregressor__leaf_size" : LEAF_SIZE_OPTIONS
+    "kneighborsregressor__n_neighbors" : N_NEIGHBORS_OPTIONS 
 }
 
 gridsearchcv = sklearn.model_selection.GridSearchCV(pipeline, param_grid=param_grid)
 
-results = gridsearchcv.fit(X, y)
-print(results)
+best_estimator = gridsearchcv.fit(X, y).best_estimator_
+print(best_estimator)
