@@ -1,6 +1,6 @@
 # DFHL: Dominica Family Health Lab
 
-This repository contains IPYNB files that demonstrate data science carried out for research in publications.
+This repository contains a single IPYNB file. It contains an analysis that makes up a portion of an academic article under review.
 
 The Dominica Family Health Lab (DFHL) is a research group in the Department of Anthropology at Baylor University.
 
